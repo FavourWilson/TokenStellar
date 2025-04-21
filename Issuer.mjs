@@ -1,5 +1,6 @@
 import { Horizon, Keypair, Asset, Operation, Networks, BASE_FEE, TransactionBuilder } from 'stellar-sdk'; // Correct import
-
+import dotenv from 'dotenv';
+dotenv.config();
 const horizonUrl = "https://horizon-testnet.stellar.org";
 const server = new Horizon.Server(horizonUrl);
 
@@ -9,8 +10,8 @@ const server = new Horizon.Server(horizonUrl);
 Networks.TESTNET;
 
 // Replace these with your generated secrets from createAccounts.js
-const issuer = Keypair.fromSecret('SC4XS5EGQJFNFUOYISVKCGIZHH2463NXS4FO3MAGOLI62CWTZAUPJTNX');
-const distributor = Keypair.fromSecret('SA35IRYHQBBFWNKJBZNVCXXACPPASB7I4GBHTM4CQ5ITLMCMJ27XTAAD');
+const issuer = Keypair.fromSecret(process.env.ISSUER_SECRET);
+const distributor = Keypair.fromSecret(DISTRIBUTOR_SECRET);
 
 // Define the custom asset (KOFF token issued by issuer account)
 const asset = new Asset('KOFF', issuer.publicKey());
