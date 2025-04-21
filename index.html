@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head><title>KOFF Token Explorer</title></head>
+  <body>
+    <h1>KOFF Token Explorer</h1>
+    <input type="text" id="address" placeholder="Enter Stellar Address" />
+    <button onclick="lookup()">Lookup</button>
+    <pre id="output"></pre>
+
+    <script>
+      async function lookup() {
+        const addr = document.getElementById('address').value;
+        const res = await fetch(`https://horizon-testnet.stellar.org/accounts/${addr}`);
+        const data = await res.json();
+        document.getElementById('output').innerText = JSON.stringify(data.balances, null, 2);
+      }
+    </script>
+  </body>
+</html>
