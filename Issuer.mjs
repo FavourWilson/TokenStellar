@@ -11,7 +11,7 @@ Networks.TESTNET;
 
 // Replace these with your generated secrets from createAccounts.js
 const issuer = Keypair.fromSecret(process.env.ISSUER_SECRET);
-const distributor = Keypair.fromSecret(DISTRIBUTOR_SECRET);
+const distributor = Keypair.fromSecret(process.env.DISTRIBUTOR_SECRET);
 
 // Define the custom asset (KOFF token issued by issuer account)
 const asset = new Asset('KOFF', issuer.publicKey());
@@ -72,3 +72,4 @@ const issueToken = async () => {
 };
 
 issueToken(); // Run the main function
+ 
